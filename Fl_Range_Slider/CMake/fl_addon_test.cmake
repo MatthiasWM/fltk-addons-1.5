@@ -6,4 +6,5 @@
 #
 
 fl_create_example(range_slider ${FL_ADDON_BASE}/test/range_slider.cxx fltk::fltk)
+target_include_directories(range_slider PRIVATE ${FL_ADDON_BASE} )
 
