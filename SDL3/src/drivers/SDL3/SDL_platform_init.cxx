@@ -16,9 +16,9 @@
 
 #include <FL/Fl_Copy_Surface.H>
 #include <FL/Fl_Graphics_Driver.H>
-#include "src/Fl_Screen_Driver.H"
-#include "src/drivers/Darwin/Fl_Darwin_System_Driver.H"
-#include "src/Fl_Window_Driver.H"
+#include "Fl_SDL_Screen_Driver.h"
+#include "Fl_SDL_System_Driver.h"
+#include "Fl_SDL_Window_Driver.h"
 #include <FL/Fl_Image_Surface.H>
 #include <FL/platform.H>
 
@@ -49,11 +49,6 @@ Fl_Graphics_Driver *Fl_Graphics_Driver::newMainGraphicsDriver()
 }
 
 
-class Fl_SDL_Screen_Driver : public Fl_Screen_Driver {
-public:
-  Fl_SDL_Screen_Driver() : Fl_Screen_Driver() { }
-};
-
 Fl_Screen_Driver *Fl_Screen_Driver::newScreenDriver()
 {
   return new Fl_SDL_Screen_Driver();
@@ -62,14 +57,9 @@ Fl_Screen_Driver *Fl_Screen_Driver::newScreenDriver()
 
 Fl_System_Driver *Fl_System_Driver::newSystemDriver()
 {
-  return new Fl_Darwin_System_Driver();
+  return new Fl_SDL_System_Driver();
 }
 
-
-class Fl_SDL_Window_Driver : public Fl_Window_Driver {
-public:
-  Fl_SDL_Window_Driver(Fl_Window *win) : Fl_Window_Driver(win) { }
-};
 
 Fl_Window_Driver *Fl_Window_Driver::newWindowDriver(Fl_Window *w)
 {
